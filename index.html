@@ -468,67 +468,62 @@ section:nth-of-type(odd) {
 </style>
 </head>
 <body>
-<script>
-(function () {
-  const maxVisible = 5; // 表示する最大件数
-  document.addEventListener('DOMContentLoaded', () => {
-    const list = document.getElementById('news-list');
-    const items = list ? Array.from(list.querySelectorAll('li')) : [];
-    const toggle = document.getElementById('news-toggle');
-    if (!list || !toggle || items.length <= maxVisible) {
-      if (toggle) toggle.style.display = 'none';
-      return;
-    }
-    // 6件目以降を一旦非表示
-    items.slice(maxVisible).forEach(li => {
-      li.style.display = 'none';
-    });
-    let expanded = false;
-    toggle.addEventListener('click', () => {
-      expanded = !expanded;
-      if (expanded) {
-        items.forEach(li => li.style.display = '');
-        toggle.textContent = '閉じる';
-      } else {
-        items.slice(maxVisible).forEach(li => {
-          li.style.display = 'none';
-        });
-        toggle.textContent = 'もっと見る';
-        // 上に戻す
-        list.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-})();
-async function fetchSignatureCount() {
-  const gasUrl = "https://script.google.com/macros/s/AKfycbzK-saSpspj0CFCc8A-3s8QRPx3gKOolFUBikqXvl8yb0HFgFHilr3ZGt-QhFejClx8Ug/exec";
-  const countElement = document.getElementById('sig-count');
-
-  try {
-    const response = await fetch(gasUrl);
-    const data = await response.json();
-    
-    // data.count が数字として解釈可能かチェック
-    const numCount = parseInt(data.count, 10);
-    
-    if (!isNaN(numCount)) {
-      countElement.innerText = numCount.toLocaleString();
-    } else {
-      countElement.innerText = "---"; // 数字じゃない場合はハイフンを表示
-    }
-  } catch (error) {
-    console.error("取得エラー:", error);
-    countElement.innerText = "---";
-  }
-}
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY8CK51GXH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-PY8CK51GXH');
+
+  // --- 1. ニュースの表示/非表示切り替え ---
+  (function () {
+    const maxVisible = 5; 
+    document.addEventListener('DOMContentLoaded', () => {
+      const list = document.getElementById('news-list');
+      const items = list ? Array.from(list.querySelectorAll('li')) : [];
+      const toggle = document.getElementById('news-toggle');
+      if (!list || !toggle || items.length <= maxVisible) {
+        if (toggle) toggle.style.display = 'none';
+        return;
+      }
+      items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
+      let expanded = false;
+      toggle.addEventListener('click', () => {
+        expanded = !expanded;
+        if (expanded) {
+          items.forEach(li => li.style.display = '');
+          toggle.textContent = '閉じる';
+        } else {
+          items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
+          toggle.textContent = 'もっと見る';
+          list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+
+  // --- 2. 署名カウンター取得機能 ---
+  async function fetchSignatureCount() {
+    const gasUrl = "https://script.google.com/macros/s/AKfycbzK-saSpspj0CFCc8A-3s8QRPx3gKOolFUBikqXvl8yb0HFgFHilr3ZGt-QhFejClx8Ug/exec";
+    const countElement = document.getElementById('sig-count');
+    if(!countElement) return;
+
+    try {
+      const response = await fetch(gasUrl);
+      const data = await response.json();
+      const numCount = parseInt(data.count, 10);
+      if (!isNaN(numCount)) {
+        countElement.innerText = numCount.toLocaleString();
+      } else {
+        countElement.innerText = "---";
+      }
+    } catch (error) {
+      console.error("取得エラー:", error);
+      countElement.innerText = "---";
+    }
+  }
+
+  // --- 3. 実行指示 ---
   document.addEventListener('DOMContentLoaded', fetchSignatureCount);
 </script>
 <header>
