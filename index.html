@@ -1,910 +1,526 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>宇宙1日1円基金 UC Fund 構想</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="一日一円で宇宙を日常に。市民がつくる未来の宇宙インフラ『宇宙1日1円基金 UC Fund』構想へのご意見を募集しています。京都大学や鹿島建設等の研究を支援。">
-<style>
-:root {
-  --main-blue: #0b3c75;
-  --accent-cyan: #27d4ff;
-  --accent-orange: #ff9f43;
-  --bg-dark: #020816;
-  --bg-light: #f5f7fb;
-  --text-main: #f1f5f9;
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.7;
-  color: var(--text-main);
-  background: var(--bg-dark);
-}
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-a {
-  color: var(--accent-cyan);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-header {
-  position: relative;
-  min-height: 80vh;
-  color: #fff;
-  overflow: hidden;
-}
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(39,212,255,0.35), transparent 55%),
-              linear-gradient(135deg, #020816, #081b3f 60%, #0b3c75);
-  mix-blend-mode: screen;
-  opacity: 0.9;
-  z-index: 1;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url("IMG_0103.PNG") center/cover no-repeat;
-  filter: blur(2px) brightness(0.55);
-  transform: scale(1.04);
-  z-index: 0;
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 24px 16px 72px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 80vh;
-}
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.logo {
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  font-size: 14px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.logo-mark {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff, #27d4ff 40%, #081b3f 75%);
-  box-shadow: 0 0 12px rgba(39,212,255,0.9);
-}
-.hero-content {
-  max-width: 640px;
-  margin-top: 40px;
-}
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(6, 182, 212, 0.15);
-  border: 1px solid rgba(129, 230, 217, 0.5);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.hero-tag span.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #34d399;
-  box-shadow: 0 0 8px rgba(52,211,153,0.9);
-}
-.hero-title {
-  font-size: clamp(28px, 5vw, 40px);
-  margin: 18px 0 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-.hero-sub {
-  font-size: 16px;
-  max-width: 520px;
-  color: rgba(241,245,249,0.9);
-}
-.hero-sub strong {
-  color: #fff;
-}
-.hero-cta {
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 22px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #27d4ff, #4ade80);
-  color: #020617;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(8, 47, 73, 0.8);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-}
-.btn-primary:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
-  box-shadow: 0 14px 32px rgba(8, 47, 73, 0.95);
-}
-.btn-signature {
-  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
-  color: #fff;
-}
-.btn-signature:hover {
-    box-shadow: 0 14px 32px rgba(255, 107, 107, 0.5);
-}
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.8);
-  background: rgba(15,23,42,0.45);
-  color: #e5e7eb;
-  font-size: 13px;
-  cursor: pointer;
-  gap: 6px;
-}
-.btn-outline span.icon {
-  font-size: 14px;
-}
-.hero-note {
-  margin-top: 14px;
-  font-size: 11px;
-  color: rgba(226,232,240,0.7);
-}
-.hero-note strong {
-  color: #e5e7eb;
-}
-.hero-side-card {
-  margin-top: 40px;
-  margin-left: auto;
-  max-width: 260px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: rgba(15,23,42,0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(148,163,184,0.4);
-  font-size: 12px;
-}
-.hero-side-card h3 {
-  font-size: 13px;
-  margin-bottom: 6px;
-}
-.hero-side-card ul {
-  list-style: none;
-  padding-left: 0;
-}
-.hero-side-card li {
-  margin-left: 0;
-  padding-left: 14px;
-  position: relative;
-  margin-top: 4px;
-}
-.hero-side-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #38bdf8;
-}
-main {
-  background: radial-gradient(circle at top, #0b1120, #020617 55%, #020617);
-  color: #e5e7eb;
-}
-section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 48px 16px;
-}
-section:nth-of-type(even) {
-  background: linear-gradient(180deg, rgba(15,23,42,0.9), #020617);
-}
-section:nth-of-type(odd) {
-  background: linear-gradient(180deg, #020617, rgba(15,23,42,0.9));
-}
-.section-header {
-  margin-bottom: 24px;
-}
-.section-label {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #9ca3af;
-  margin-bottom: 4px;
-}
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.section-desc {
-  font-size: 14px;
-  color: #cbd5f5;
-  max-width: 640px;
-}
-.section-desc strong {
-  color: #e5e7eb;
-}
-.columns {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 24px;
-}
-.card {
-  background: rgba(15,23,42,0.85);
-  border-radius: 18px;
-  padding: 20px 18px;
-  border: 1px solid rgba(148,163,184,0.4);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
-  font-size: 14px;
-}
-.card h3 {
-  font-size: 15px;
-  margin-bottom: 6px;
-}
-.card ul {
-  margin-top: 6px;
-  padding-left: 18px;
-}
-.card li {
-  margin-bottom: 4px;
-}
-.pill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-  font-size: 11px;
-}
-.pill {
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,0.7);
-  background: rgba(15,23,42,0.6);
-}
-.pill--green {
-  border-color: rgba(74, 222, 128, 0.8);
-  color: #bbf7d0;
-}
-.pill--orange {
-  border-color: rgba(249, 115, 22, 0.8);
-  color: #fed7aa;
-}
-.pill--blue {
-  border-color: rgba(56, 189, 248, 0.8);
-  color: #bae6fd;
-}
-.three-columns {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 10px;
-}
-.pillar-card {
-  background: rgba(15,23,42,0.85);
-  border-radius: 18px;
-  padding: 16px 14px 14px;
-  border: 1px solid rgba(148,163,184,0.4);
-  font-size: 13px;
-}
-.pillar-tag {
-  font-size: 11px;
-  color: #9ca3af;
-  margin-bottom: 2px;
-}
-.pillar-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.pillar-body {
-  font-size: 12px;
-  color: #d1d5db;
-  margin-bottom: 6px;
-  min-height: 52px;
-}
-.pillar-list {
-  list-style: none;
-  padding-left: 0;
-  font-size: 11px;
-  color: #e5e7eb;
-}
-.pillar-list li {
-  margin-top: 3px;
-  padding-left: 14px;
-  position: relative;
-}
-.pillar-list li::before {
-  content: "▶";
-  font-size: 8px;
-  position: absolute;
-  left: 0;
-  top: 3px;
-  color: #38bdf8;
-}
-.timeline {
-  margin-top: 12px;
-  display: grid;
-  gap: 14px;
-}
-.timeline-item {
-  display: grid;
-  grid-template-columns: 0.9fr 3fr;
-  gap: 10px;
-  font-size: 13px;
-}
-.timeline-term {
-  font-weight: 600;
-  color: #a5b4fc;
-}
-.timeline-desc {
-  color: #e5e7eb;
-}
-.participation-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-.participation-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-.note-box {
-  font-size: 12px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(30,64,175,0.5);
-  border: 1px solid rgba(96,165,250,0.8);
-}
-.story-card {
-    line-height: 2;
-}
-.story-card h3 {
-    color: var(--accent-cyan);
-    margin: 30px 0 15px;
-    border-bottom: 1px solid var(--accent-cyan);
-    display: inline-block;
-}
-.counter-box {
-    text-align: center;
-    padding: 40px;
-    background: rgba(255, 159, 67, 0.1);
-    border-radius: 20px;
-    border: 1px solid var(--accent-orange);
-    margin: 40px 0;
-}
-.counter-num {
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--accent-orange);
-    display: block;
-}
-.feedback-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  margin-top: 12px;
-  font-size: 13px;
-}
-.feedback-list {
-  list-style: disc;
-  padding-left: 18px;
-}
-.feedback-card {
-  background: rgba(15,23,42,0.9);
-  border-radius: 16px;
-  padding: 16px 14px;
-  border: 1px dashed rgba(148,163,184,0.7);
-  font-size: 12px;
-}
-.feedback-card strong {
-  color: #e5e7eb;
-}
-.footer {
-  border-top: 1px solid rgba(55,65,81,0.8);
-  padding: 18px 16px 26px;
-  font-size: 11px;
-  color: #9ca3af;
-  max-width: 960px;
-  margin: 0 auto;
-}
-.footer p + p {
-  margin-top: 4px;
-}
-@media (max-width: 768px) {
-  .columns,
-  .three-columns,
-  .timeline-item,
-  .participation-box,
-  .feedback-grid {
-    grid-template-columns: 1fr;
-  }
-  header {
-    min-height: 90vh;
-  }
-  .hero-side-card {
-    margin-left: 0;
-    max-width: none;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <title>宇宙1日1円基金 UC Fund 構想</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一日一円で宇宙を日常に。市民がつくる未来の宇宙インフラ『宇宙1日1円基金 UC Fund』構想へのご意見を募集しています。京都大学や鹿島建設等の研究を支援。">
+  <link rel="stylesheet" href="ucfund.css">
 </head>
-<body>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY8CK51GXH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PY8CK51GXH');
-
-  // --- 1. ニュースの表示/非表示切り替え ---
-  (function () {
-    const maxVisible = 5; 
-    document.addEventListener('DOMContentLoaded', () => {
-      const list = document.getElementById('news-list');
-      const items = list ? Array.from(list.querySelectorAll('li')) : [];
-      const toggle = document.getElementById('news-toggle');
-      if (!list || !toggle || items.length <= maxVisible) {
-        if (toggle) toggle.style.display = 'none';
-        return;
-      }
-      items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
-      let expanded = false;
-      toggle.addEventListener('click', () => {
-        expanded = !expanded;
-        if (expanded) {
-          items.forEach(li => li.style.display = '');
-          toggle.textContent = '閉じる';
-        } else {
-          items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
-          toggle.textContent = 'もっと見る';
-          list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  <body>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PY8CK51GXH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PY8CK51GXH');
+  
+    // --- 1. ニュースの表示/非表示切り替え ---
+    (function () {
+      const maxVisible = 5; 
+      document.addEventListener('DOMContentLoaded', () => {
+        const list = document.getElementById('news-list');
+        const items = list ? Array.from(list.querySelectorAll('li')) : [];
+        const toggle = document.getElementById('news-toggle');
+        if (!list || !toggle || items.length <= maxVisible) {
+          if (toggle) toggle.style.display = 'none';
+          return;
         }
+        items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
+        let expanded = false;
+        toggle.addEventListener('click', () => {
+          expanded = !expanded;
+          if (expanded) {
+            items.forEach(li => li.style.display = '');
+            toggle.textContent = '閉じる';
+          } else {
+            items.slice(maxVisible).forEach(li => { li.style.display = 'none'; });
+            toggle.textContent = 'もっと見る';
+            list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
       });
-    });
-  })();
-
-  // --- 2. 署名カウンター取得機能 ---
-  async function fetchSignatureCount() {
-    const gasUrl = "https://script.google.com/macros/s/AKfycbzK-saSpspj0CFCc8A-3s8QRPx3gKOolFUBikqXvl8yb0HFgFHilr3ZGt-QhFejClx8Ug/exec";
-    const countElement = document.getElementById('sig-count');
-    if(!countElement) return;
-
-    try {
-      const response = await fetch(gasUrl);
-      const data = await response.json();
-      const numCount = parseInt(data.count, 10);
-      if (!isNaN(numCount)) {
-        countElement.innerText = numCount.toLocaleString();
-      } else {
+    })();
+  
+    // --- 2. 署名カウンター取得機能 ---
+    async function fetchSignatureCount() {
+      const gasUrl = "https://script.google.com/macros/s/AKfycbzK-saSpspj0CFCc8A-3s8QRPx3gKOolFUBikqXvl8yb0HFgFHilr3ZGt-QhFejClx8Ug/exec";
+      const countElement = document.getElementById('sig-count');
+      if(!countElement) return;
+  
+      try {
+        const response = await fetch(gasUrl);
+        const data = await response.json();
+        const numCount = parseInt(data.count, 10);
+        if (!isNaN(numCount)) {
+          countElement.innerText = numCount.toLocaleString();
+        } else {
+          countElement.innerText = "---";
+        }
+      } catch (error) {
+        console.error("取得エラー:", error);
         countElement.innerText = "---";
       }
-    } catch (error) {
-      console.error("取得エラー:", error);
-      countElement.innerText = "---";
     }
-  }
-
-  // --- 3. 実行指示 ---
-  document.addEventListener('DOMContentLoaded', fetchSignatureCount);
-</script>
-<header>
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div class="logo">
-        <div class="logo-mark"></div>
-        <span>UC Fund Concept</span>
-      </div>
-      <div style="font-size:12px;color:#e5e7eb;opacity:.8;">
-        宇宙1日1円基金 UC Fund 構想
-      </div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-tag">
-        <span class="dot"></span>
-        <span>Idea Prototype</span>
-      </div>
-      <h1 class="hero-title">1日1円で宇宙を日常に</h1>
-      <p class="hero-sub">
-        「宇宙1日1円基金 UC Fund」は、一人一人の小さな力を集めて
-        国の宇宙戦略や産業と結びつける市民発の宇宙インフラを描いた
-        <strong>構想段階のプロジェクト案</strong>です。
-        このアイデアについて、あなたの率直なご意見を募集しています。
-      </p>
-      <div class="hero-cta">
-        <a href="#signature" class="btn-primary btn-signature">署名活動に参加する</a>
-        <a href="#story" class="btn-primary">解説版を読む</a>
-        <a href="#outline" class="btn-outline">
-          <span class="icon">▼</span>
-          まず構想の概要を見る
-        </a>
-      </div>
-      <p class="hero-note">
-        ※このページは「アイデア共有と意見募集」のための試験的な LP です。
-        現時点では実際の資金募集や投資は行っていません。
-      </p>
-    </div>
-    <aside class="hero-side-card">
-      <h3>目指すもの（宇宙世紀イメージ）</h3>
-      <ul>
-        <li>コロニーが一つの「街」として機能し、その中で完結した生活が送れる世界。</li>
-        <li>宇宙と地球の行き来が、今の飛行機並みに手軽になる世界。</li>
-        <li>月・火星・その他天体への居住、観光、資源採取が日常化する世界。</li>
-      </ul>
-    </aside>
-  </div>
-</header>
-<main>
-  <section id="outline">
-    <div class="section-header">
-      <div class="section-label">Outline</div>
-      <h2 class="section-title">UC Fund が変える未来</h2>
-      <p class="section-desc">
-        宇宙1日1円基金は、一人一人の「1日1円」を人数と時間で積み上げ、国の戦略や産業と結びついた巨大な支援の力を生み出し、市民が未来のインフラに直接投資するモデルの象徴を目指します
-      </p>
-    </div>
-    <div class="columns">
-      <div class="card">
-        <h2 style="color: var(--accent-cyan); margin-bottom: 20px; font-size: 18px;">UC Fund プロジェクト概要</h2>
-        <div class="grid-2">
-          <div class="problem-box" style="border-left: 4px solid #ef4444; padding-left: 20px;">
-            <h3 style="color: #ef4444; font-size: 16px;">現状の課題 </h3>
-            <p style="font-size: 14px; opacity: 0.8;">
-              ● 国家・企業主導の限界：多額の予算を要するため、意思決定が一部に限られている。<br>
-              ● 市民の不在：宇宙に憧れる市民が、直接開発に貢献したり参加したりする手段がない。
-            </p>
-          </div>
-          <div class="solution-box" style="border-left: 4px solid #10b981; padding-left: 20px;">
-            <h3 style="color: #10b981; font-size: 16px;">解決策 </h3>
-            <p style="font-size: 14px; opacity: 0.8;">
-              ● 市民発の宇宙インフラ投資モデル：一人ひとりが「1日1円」を出し合うことで、国の戦略や産業と結びついた巨大な支援の力を生み出します。
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>この構想でやりたいこと </h3>
-        <ul>
-          <li>宇宙世紀の実現。宇宙で地球と同じような生活が送れる基盤を築きたい。</li>
-          <li>完全非営利で、研究・開発機関と賛同者をつなげる団体として活動したい。</li>
-          <li>市民の小さな負担で、長期的な宇宙インフラ研究を支える仕組みを考えたい。</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="news">
-    <div class="section-header">
-      <div class="section-label">News</div>
-      <h2 class="section-title">NEWS / 更新情報</h2>
-    </div>
-    <div class="card">
-      <ul id="news-list" style="list-style:none;padding-left:0;font-size:13px;line-height:1.8;">
-        <li>2026-03-10　新セクション！なぜ基金か</li>
-        <li>2026-03-08　ルナグラス解説ページを作成</li>
-        <li><strong>2026-03-08　署名活動を開始しました。目標10,000人への挑戦がスタート。</strong></li>
-        <li>2026-03-08　LPを大幅リニューアル。具体的支援対象（ルナグラス等）を明記しました。</li>
-        <li>2026-03-06　NEWS セクションに「もっと見る」機能を追加しました。</li>
-        <li>2026-03-05　フィードバック用の Google フォームを設置しました。</li>
-        <li>2026-03-05　Xアカウントを開設し、意見募集をスタートしました。</li>
-        <li>2026-03-05　宇宙1日1円基金 UC Fund の構想サイトを公開しました。</li>
-      </ul>
-      <button id="news-toggle"
-        style="margin-top:8px;font-size:12px;border-radius:999px;
-        border:1px solid rgba(148,163,184,0.7);
-        background:rgba(15,23,42,0.6);color:#e5e7eb;
-        padding:4px 12px;cursor:pointer;">
-        もっと見る
-      </button>
-    </div>
-  </section>
-
-
-  <section id="story">
-    <div class="section-header">
-      <div class="section-label">Explainer</div>
-      <h2 class="section-title">3分で読める UC Fund の物語</h2>
-      <p class="section-desc">
-        UC Fund がなぜ必要なのか、そして私たちが目指す未来について、3分で読める解説版です。
-      </p>
-    </div>
-    <div class="card story-card">
-        <h3>1. なぜ、今「市民の力」が必要なのか </h3>
-        <p>かつて大航海時代、未知の海へ漕ぎ出したのは探検家たちでしたが、それを支えたのは多くの出資者や人々の期待でした。現代の宇宙開発も、今まさにそのフェーズにあります。しかし、現在は「国家の予算」や「巨大企業のビジネス」という枠組みの中にあり、一般市民はニュースを眺めるだけの「観客」に留まっています。もし、宇宙が人類の次の生活圏になるのであれば、その基盤は、私たち市民の手によって形作られるべきではないでしょうか。</p>
-
-        <h3>2. UC Fund とは何か </h3>
-        <p>「1日1円」という、誰もが無理なく継続できるアクションで、宇宙を日常に変えていくためのプラットフォームです。この基金の最大の特徴は「完全非営利」であり、市民と研究・開発機関をダイレクトにつなげる点にあります。透明性を最優先し、自分の1円がどのネジになり、どのエンジンを動かしたのかが実感できるモデルを目指しています。</p>
-
-        <h3>3. 私たちが支援する「未来の技術」 </h3>
-        <p>【住】では、人間が「街」として生活できる人工重力施設（ルナグラス）を、【動】では誰もが「パスポートとチケット1枚」で宇宙へ行くための再使用型エンジンを、【拓】では月や火星を大地に変える建設ロボットを支援します。日本の技術は居住や建設において世界唯一のビジョンを持っていますが、これらが資金不足で停滞することは人類にとっての大きな損失です。</p>
-
-        <h3>4. 私たち市民にできること </h3>
-        <p>壮大な夢も、最初の一歩は「10,000人の署名」から始まります。まずは、「日本の市民として、この宇宙研究を応援する」という意思表示をしてください。あなたの1円が、数十年後の宇宙の街の礎（いしずえ）になる。そんなロマンあふれる物語に、あなたも参加しませんか？</p>
-    </div>
-  </section>
-
-  <section id="why-fund" style="padding: 60px 20px; background: rgba(15, 23, 42, 0.8);">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="text-align: center; color: var(--accent-cyan); font-size: 24px; margin-bottom: 30px;">
-            【なぜ、既存の仕組みでは足りないのか？】
-        </h2>
-        
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-left: 4px solid #ef4444; border-radius: 4px; margin-bottom: 30px;">
-            <h3 style="color: #f87171; font-size: 20px; margin-bottom: 15px;">20億円の融資でも守れなかった、日本の宇宙の未来。</h3>
-            <p style="font-size: 15px; line-height: 1.7; color: #e2e8f0;">
-                「技術はある、情熱もある。それでも、日本の宇宙ベンチャーは資金不足で立ち止まってしまいます。」<br><br>
-                <strong>＊＊スペースウォーカー社の事例（2026年破産）＊＊</strong><br>
-                日本発有人宇宙飛行を目指し、文科省補助採択・20億円融資の「期待の星」。しかし補助打ち切りで資金難、負債約20億円で破産。数年の研究経過が一瞬で消滅。
-            </p>
-        </div>
-
-        <h3 style="color: white; font-size: 18px; margin-bottom: 20px; text-align: center;">国や銀行任せにできない、3つの理由</h3>
-        
-        <div style="display: grid; gap: 20px; margin-bottom: 40px;">
-            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
-                <span style="color: var(--accent-cyan); font-weight: bold;">1. 「失敗」を許さない減点方式</span><br>
-                <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">国の補助金や銀行融資は、一度の計画遅延や失敗で「支援停止」のリスクを孕みます。未知に挑む宇宙開発において、短期的な成果主義は最大の壁です。</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
-                <span style="color: var(--accent-cyan); font-weight: bold;">2. 「一人のNO」で全てが止まる</span><br>
-                <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">数人の審査員や担当者が首を縦に振らなければ、優れた技術も世に出ることはありません。特定の機関に命運を握られている限り、自由な研究は不可能です。</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
-                <span style="color: var(--accent-cyan); font-weight: bold;">3. 数十年単位の構想には不向き</span><br>
-                <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">ルナグラスのような宇宙居住は、数十年をかけて育てるプロジェクトです。数年でリターンを求める現在の金融システムでは、最初から無理があるのです。</p>
-            </div>
-        </div>
-
-        <div style="text-align: center; background: linear-gradient(135deg, rgba(39, 212, 255, 0.1) 0%, rgba(30, 58, 138, 0.2) 100%); padding: 30px; border-radius: 12px; border: 1px solid var(--accent-cyan);">
-            <h3 style="color: white; margin-bottom: 15px;">だからこそ、1億人の「1日1円」が必要なのです。</h3>
-            <p style="font-size: 15px; line-height: 1.8; color: #e2e8f0;">
-                UC Fundが目指すのは、国や銀行という少数の意思決定に依存しない、<strong>世界で最も強く、安定した資金源</strong>です。<br>
-                1億人の市民が直接支えることで、たとえ一回の試験に失敗しても、たとえ国の方針が変わっても、ルナグラスの建設を止めることはありません。<br>
-                <span style="color: var(--accent-cyan); font-weight: bold; font-size: 18px;">「誰にも邪魔されない、私たちの未来」</span>を、私たちの手で作り上げる。それがこの基金の真の目的です。
-            </p>
-        </div>
-    </div>
-</section>
-
-  <section id="signature">
-    <div class="section-header">
-      <div class="section-label">Signature</div>
-      <h2 class="section-title">署名活動にご協力ください</h2>
-      <p class="section-desc">
-        「宇宙1日1円基金 UC Fund」構想の実現に向けて、皆様の賛同の声を形にするため、署名活動を開始いたしました。目標は10,000人の署名です。
-      </p>
-    </div>
-    <div class="counter-box">
-        <p style="margin-bottom: 10px; opacity: 0.8;">目標：10,000人の署名活動実施中 </p>
-        <span class="counter-num" id="sig-count">読み込み中...</span>
-        <p>賛同者の声が集まっています</p>
-    </div>
-    <div class="card" style="text-align: center; padding: 40px 20px;">
-      <h3 style="font-size: 18px; margin-bottom: 12px;">市民の手でつくる宇宙インフラの未来へ </h3>
-      <p style="margin-bottom: 24px; color: #cbd5f5;">本構想にご賛同いただける方は、ぜひ以下のリンクよりご署名をお願いいたします。</p>
-      <a href="https://c.org/QYcgwPDdTQ" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: linear-gradient(135deg, #ff9f43, #ff6b6b); color: white; padding: 12px 32px; font-size: 16px; display: inline-flex; box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);">
-        Change.org で署名する
-      </a>
-      <p style="margin-top: 20px; font-size: 14px; opacity: 0.6;">※Change.org の外部サイトへ移動します</p>
-    </div>
-  </section>
-
   
-  <section id="pillars">
-    <div class="section-header">
-      <div class="section-label">Vision</div>
-      <h2 class="section-title">3つの柱と初期支援対象 </h2>
-      <p class="section-desc">
-        宇宙世紀の基盤づくりを、<strong>「住」「動」「拓」</strong>の3つの柱で整理し、具体的な企業・研究テーマ（予定）への支援を目指します。<br>
-        以下は、特定企業と提携しているわけではありませんが、ビジョンに沿った投資候補分野の例です。
-      </p>
-    </div>
-    <div style="max-width: 720px;margin: 0 auto 20px;">
-      <img src="IMG_0121.png" alt="UC Fund構想図">
-    </div>
-    <div class="three-columns">
-      <div class="pillar-card">
-        <div class="pillar-tag">Pillar 01 </div>
-        <div class="pillar-title">住：街としての宇宙居住区 </div>
-        <p class="pillar-body">
-          無機質なステーションではなく、1Gの人工重力を実現し、地球と同じように健康に暮らせる「街」を目指します。
-        </p>
-        <ul class="pillar-list">
-          <li><strong>ルナグラス構想 （<a href="https://space.innovationkyoto.org/"target="_blank" rel="noopener noreferrer">京都大学SIC</a> +<a href="https://www.kajima.co.jp/"target="_blank" rel="noopener noreferrer">鹿島建設</a>)</strong>：日本発の世界唯一の回転型人工重力施設。</li>
-          <a href="https://ucfundproject-ops.github.io/runa/" style="display: inline-block; margin-top: 10px; font-size: 13px; color: var(--accent-cyan); text-decoration: underline;">
-    👉 ルナグラス解説ページはこちら</a>
-          <li>居住モジュール、宇宙農業、閉鎖生態系の研究。</li>
-        </ul>
+    // --- 3. 実行指示 ---
+    document.addEventListener('DOMContentLoaded', fetchSignatureCount);
+
+    // --- 4. スクロール表示アニメーション ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const targets = Array.from(document.querySelectorAll('.reveal'));
+      if (targets.length === 0) return;
+
+      // フォールバック（IntersectionObserver非対応）
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const io = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        },
+        { root: null, threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+      );
+
+      targets.forEach(el => io.observe(el));
+    });
+  </script>
+  <header>
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <span>UC Fund Concept</span>
+        </div>
+        <div style="font-size:12px;color:#e5e7eb;opacity:.8;">
+          宇宙1日1円基金 UC Fund 構想
+        </div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-tag">Pillar 02 </div>
-        <div class="pillar-title">動：安価な宇宙輸送インフラ </div>
-        <p class="pillar-body">
-          誰もがパスポートとチケット1枚で宇宙に行けるような、低コストで再使用可能な輸送インフラを目指します。
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          <span>Idea Prototype</span>
+        </div>
+        <h1 class="hero-title">1日1円で宇宙を日常に</h1>
+        <p class="hero-sub">
+          「宇宙1日1円基金 UC Fund」は、一人一人の小さな力を集めて
+          国の宇宙戦略や産業と結びつける市民発の宇宙インフラを描いた
+          <strong>構想段階のプロジェクト案</strong>です。
+          このアイデアについて、あなたの率直なご意見を募集しています。
         </p>
-        <ul class="pillar-list">
-          <li><strong>再利用型エンジン (
-            <a href="https://innovative-space-carrier.co.jp/"target="_blank" rel="noopener noreferrer">ISC</a>
-            <a href="https://www.ihi.co.jp/"target="_blank" rel="noopener noreferrer">IHI</a>
-            <a href="https://global.honda/jp/topics/2025/c_2025-06-17c.html"target="_blank" rel="noopener noreferrer">ホンダ</a>
-            <a href="https://www.ebara.com/jp-ja/"target="_blank" rel="noopener noreferrer">荏原製作所</a>
-            </strong>）液化メタンエンジンの燃焼実験や垂直離着陸に成功。</li>
-          <li>滑走路から飛び立つ宇宙往還機の開発支援。</li>
-        </ul>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-tag">Pillar 03 </div>
-        <div class="pillar-title">拓：活用する大地としての宇宙 </div>
-        <p class="pillar-body">
-          月や火星を「見る天体」から、「資源採取・建設・居住・観光」が行われる活用する大地へと変えていくことを目指します。
-        </p>
-        <ul class="pillar-list">
-          <li><strong>クアッドアクセル (<a href="https://www.kajima.co.jp/"target="_blank" rel="noopener noreferrer">鹿島建設</a>)</strong>、搭乗型ロボット<strong>アーカックス(<a href="https://tsubame-hi.com/"target="_blank" rel="noopener noreferrer">ツバメインダストリ</a>)</strong>の開発。</li>
-          <a href="https://ucfundproject-ops.github.io/A4CSEL/" style="display: inline-block; margin-top: 10px; font-size: 13px; color: var(--accent-cyan); text-decoration: underline;">
-            👉クアッドアクセル解説ページはこちら
+        <div class="hero-cta">
+          <a href="#signature" class="btn-primary btn-signature">署名活動に参加する</a>
+          <a href="#story" class="btn-primary">解説版を読む</a>
+          <a href="#outline" class="btn-outline">
+            <span class="icon">▼</span>
+            まず構想の概要を見る
           </a>
-          <li>宇宙作業ロボット、建設ロボット技術実証支援。</li>
+        </div>
+        <p class="hero-note">
+          ※このページは「アイデア共有と意見募集」のための試験的な LP です。
+          現時点では実際の資金募集や投資は行っていません。
+        </p>
+      </div>
+      <aside class="hero-side-card">
+        <h3>目指すもの（宇宙世紀イメージ）</h3>
+        <ul>
+          <li>コロニーが一つの「街」として機能し、その中で完結した生活が送れる世界。</li>
+          <li>宇宙と地球の行き来が、今の飛行機並みに手軽になる世界。</li>
+          <li>月・火星・その他天体への居住、観光、資源採取が日常化する世界。</li>
         </ul>
+      </aside>
+    </div>
+  </header>
+  <main>
+    <section id="outline">
+      <div class="section-header">
+        <div class="section-label">Outline</div>
+        <h2 class="section-title">UC Fund が変える未来</h2>
+        <p class="section-desc">
+          宇宙1日1円基金は、一人一人の「1日1円」を人数と時間で積み上げ、国の戦略や産業と結びついた巨大な支援の力を生み出し、市民が未来のインフラに直接投資するモデルの象徴を目指します
+        </p>
       </div>
-    </div>
-    <div class="pill-list">
-      <div class="pill pill--green">初期資金配分イメージ：住 50% / 動 30% / 拓 20%（年度ごとに見直し）</div>
-    </div>
-  </section>
-
-  <section id="roadmap">
-    <div class="section-header">
-      <div class="section-label">Roadmap</div>
-      <h2 class="section-title">ロードマップ概要</h2>
-      <p class="section-desc">
-        宇宙インフラの整備は、数十年〜100年単位の取り組みになります。賛同者一人ひとりの思いを集めて実現します。
-      </p>
-    </div>
-    <div class="card">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-term">近距離（〜10年）</div>
-          <div class="timeline-desc">
-            認知向上、サポーターを一千万人規模へ。ルナグラス研究への実質的貢献と実績化。
+      <div class="columns">
+        <div class="card">
+          <h2 style="color: var(--accent-cyan); margin-bottom: 20px; font-size: 18px;">UC Fund プロジェクト概要</h2>
+          <div class="grid-2">
+            <div class="problem-box" style="border-left: 4px solid #ef4444; padding-left: 20px;">
+              <h3 style="color: #ef4444; font-size: 16px;">現状の課題 </h3>
+              <p style="font-size: 14px; opacity: 0.8;">
+                ● 国家・企業主導の限界：多額の予算を要するため、意思決定が一部に限られている。<br>
+                ● 市民の不在：宇宙に憧れる市民が、直接開発に貢献したり参加したりする手段がない。
+              </p>
+            </div>
+            <div class="solution-box" style="border-left: 4px solid #10b981; padding-left: 20px;">
+              <h3 style="color: #10b981; font-size: 16px;">解決策 </h3>
+              <p style="font-size: 14px; opacity: 0.8;">
+                ● 市民発の宇宙インフラ投資モデル：一人ひとりが「1日1円」を出し合うことで、国の戦略や産業と結びついた巨大な支援の力を生み出します。
+              </p>
+            </div>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-term">中距離（〜30年）</div>
-          <div class="timeline-desc">
-            月・軌道上での長期居住実験。宇宙作業ロボや往還機の実用化プロトタイプの運用開始。
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-term">長距離（〜100年）</div>
-          <div class="timeline-desc">
-            コロニー初号機の建設。月、火星への「街」の建設、持続的な支援。
-          </div>
+        <div class="card">
+          <h3>この構想でやりたいこと </h3>
+          <ul>
+            <li>宇宙世紀の実現。宇宙で地球と同じような生活が送れる基盤を築きたい。</li>
+            <li>完全非営利で、研究・開発機関と賛同者をつなげる団体として活動したい。</li>
+            <li>市民の小さな負担で、長期的な宇宙インフラ研究を支える仕組みを考えたい。</li>
+          </ul>
         </div>
       </div>
-    </div>
+    </section>
+  
+    <section id="news">
+      <div class="section-header">
+        <div class="section-label">News</div>
+        <h2 class="section-title">NEWS / 更新情報</h2>
+      </div>
+      <div class="card">
+        <ul id="news-list" style="list-style:none;padding-left:0;font-size:13px;line-height:1.8;">
+          <li>2026-03-10　新セクション！なぜ基金か</li>
+          <li>2026-03-08　ルナグラス解説ページを作成</li>
+          <li><strong>2026-03-08　署名活動を開始しました。目標10,000人への挑戦がスタート。</strong></li>
+          <li>2026-03-08　LPを大幅リニューアル。具体的支援対象（ルナグラス等）を明記しました。</li>
+          <li>2026-03-06　NEWS セクションに「もっと見る」機能を追加しました。</li>
+          <li style="display: none;">2026-03-05　フィードバック用の Google フォームを設置しました。</li>
+          <li style="display: none;">2026-03-05　Xアカウントを開設し、意見募集をスタートしました。</li>
+          <li style="display: none;">2026-03-05　宇宙1日1円基金 UC Fund の構想サイトを公開しました。</li>
+        </ul>
+        <button id="news-toggle" style="margin-top:8px;font-size:12px;border-radius:999px;
+          border:1px solid rgba(148,163,184,0.7);
+          background:rgba(15,23,42,0.6);color:#e5e7eb;
+          padding:4px 12px;cursor:pointer;">
+          もっと見る
+        </button>
+      </div>
+    </section>
+  
+  
+    <section id="story">
+      <div class="section-header">
+        <div class="section-label">Explainer</div>
+        <h2 class="section-title">3分で読める UC Fund の物語</h2>
+        <p class="section-desc">
+          UC Fund がなぜ必要なのか、そして私たちが目指す未来について、3分で読める解説版です。
+        </p>
+      </div>
+      <div class="card story-card">
+          <h3>1. なぜ、今「市民の力」が必要なのか </h3>
+          <p>かつて大航海時代、未知の海へ漕ぎ出したのは探検家たちでしたが、それを支えたのは多くの出資者や人々の期待でした。現代の宇宙開発も、今まさにそのフェーズにあります。しかし、現在は「国家の予算」や「巨大企業のビジネス」という枠組みの中にあり、一般市民はニュースを眺めるだけの「観客」に留まっています。もし、宇宙が人類の次の生活圏になるのであれば、その基盤は、私たち市民の手によって形作られるべきではないでしょうか。</p>
+  
+          <h3>2. UC Fund とは何か </h3>
+          <p>「1日1円」という、誰もが無理なく継続できるアクションで、宇宙を日常に変えていくためのプラットフォームです。この基金の最大の特徴は「完全非営利」であり、市民と研究・開発機関をダイレクトにつなげる点にあります。透明性を最優先し、自分の1円がどのネジになり、どのエンジンを動かしたのかが実感できるモデルを目指しています。</p>
+  
+          <h3>3. 私たちが支援する「未来の技術」 </h3>
+          <p>【住】では、人間が「街」として生活できる人工重力施設（ルナグラス）を、【動】では誰もが「パスポートとチケット1枚」で宇宙へ行くための再使用型エンジンを、【拓】では月や火星を大地に変える建設ロボットを支援します。日本の技術は居住や建設において世界唯一のビジョンを持っていますが、これらが資金不足で停滞することは人類にとっての大きな損失です。</p>
+  
+          <h3>4. 私たち市民にできること </h3>
+          <p>壮大な夢も、最初の一歩は「10,000人の署名」から始まります。まずは、「日本の市民として、この宇宙研究を応援する」という意思表示をしてください。あなたの1円が、数十年後の宇宙の街の礎（いしずえ）になる。そんなロマンあふれる物語に、あなたも参加しませんか？</p>
+      </div>
+    </section>
+  
+    <section id="why-fund" style="padding: 60px 20px; background: rgba(15, 23, 42, 0.8);">
+      <div style="max-width: 800px; margin: 0 auto;">
+          <h2 style="text-align: center; color: var(--accent-cyan); font-size: 24px; margin-bottom: 30px;">
+              【なぜ、既存の仕組みでは足りないのか？】
+          </h2>
+          
+          <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-left: 4px solid #ef4444; border-radius: 4px; margin-bottom: 30px;">
+              <h3 style="color: #f87171; font-size: 20px; margin-bottom: 15px;">20億円の融資でも守れなかった、日本の宇宙の未来。</h3>
+              <p style="font-size: 15px; line-height: 1.7; color: #e2e8f0;">
+                  「技術はある、情熱もある。それでも、日本の宇宙ベンチャーは資金不足で立ち止まってしまいます。」<br><br>
+                  <strong>＊＊スペースウォーカー社の事例（2026年破産）＊＊</strong><br>
+                  日本発有人宇宙飛行を目指し、文科省補助採択・20億円融資の「期待の星」。しかし補助打ち切りで資金難、負債約20億円で破産。数年の研究経過が一瞬で消滅。
+              </p>
+          </div>
+  
+          <h3 style="color: white; font-size: 18px; margin-bottom: 20px; text-align: center;">国や銀行任せにできない、3つの理由</h3>
+          
+          <div style="display: grid; gap: 20px; margin-bottom: 40px;">
+              <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                  <span style="color: var(--accent-cyan); font-weight: bold;">1. 「失敗」を許さない減点方式</span><br>
+                  <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">国の補助金や銀行融資は、一度の計画遅延や失敗で「支援停止」のリスクを孕みます。未知に挑む宇宙開発において、短期的な成果主義は最大の壁です。</p>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                  <span style="color: var(--accent-cyan); font-weight: bold;">2. 「一人のNO」で全てが止まる</span><br>
+                  <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">数人の審査員や担当者が首を縦に振らなければ、優れた技術も世に出ることはありません。特定の機関に命運を握られている限り、自由な研究は不可能です。</p>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                  <span style="color: var(--accent-cyan); font-weight: bold;">3. 数十年単位の構想には不向き</span><br>
+                  <p style="font-size: 14px; color: #cbd5e1; margin-top: 5px;">ルナグラスのような宇宙居住は、数十年をかけて育てるプロジェクトです。数年でリターンを求める現在の金融システムでは、最初から無理があるのです。</p>
+              </div>
+          </div>
+  
+          <div style="text-align: center; background: linear-gradient(135deg, rgba(39, 212, 255, 0.1) 0%, rgba(30, 58, 138, 0.2) 100%); padding: 30px; border-radius: 12px; border: 1px solid var(--accent-cyan);">
+              <h3 style="color: white; margin-bottom: 15px;">だからこそ、1億人の「1日1円」が必要なのです。</h3>
+              <p style="font-size: 15px; line-height: 1.8; color: #e2e8f0;">
+                  UC Fundが目指すのは、国や銀行という少数の意思決定に依存しない、<strong>世界で最も強く、安定した資金源</strong>です。<br>
+                  1億人の市民が直接支えることで、たとえ一回の試験に失敗しても、たとえ国の方針が変わっても、ルナグラスの建設を止めることはありません。<br>
+                  <span style="color: var(--accent-cyan); font-weight: bold; font-size: 18px;">「誰にも邪魔されない、私たちの未来」</span>を、私たちの手で作り上げる。それがこの基金の真の目的です。
+              </p>
+          </div>
+      </div>
   </section>
-
-  <section id="join">
-    <div class="section-header">
-      <div class="section-label">Participation</div>
-      <h2 class="section-title">参加方法のイメージと資金調達</h2>
-      <p class="section-desc">
-        市民が無理なく継続して参加できる仕組みを構築し、将来的には「1日1円」レベルの少額から参加できる仕組みを想定しています。
-      </p>
-    </div>
-    <div class="participation-grid">
-      <div class="participation-box">
-          <div class="card">
-            <h3>想定している仕組み</h3>
-            <ul>
-              <li>月額制サブスクリプション：30円/300円 / 1,000円の3プランを想定。</li>
-              <li>PayPay ポイント寄付：法人化後に導入予定。</li>
-              <li>いつでも金額変更・停止可能な、任意参加・自律的なモデル。</li>
-            </ul>
-          </div>
-          <div class="card">
-              <h3>透明性の確保 </h3>
-              <ul>
-                  <li>集まった資金の配分先と使途を公開。</li>
-                  <li>半年に一度の活動報告書（宇宙新聞）を発行。</li>
-                  <li>参加者が「自分の1円がどう形になっているか」を実感できる仕組み。</li>
-              </ul>
-          </div>
+  
+    <section id="pillars">
+      <div class="section-header">
+        <div class="section-label">Vision</div>
+        <h2 class="section-title">3つの柱と初期支援対象 </h2>
+        <p class="section-desc">
+          宇宙世紀の基盤づくりを、<strong>「住」「動」「拓」</strong>の3つの柱で整理し、具体的な企業・研究テーマ（予定）への支援を目指します。<br>
+          以下は、特定企業と提携しているわけではありませんが、ビジョンに沿った投資候補分野の例です。
+        </p>
+      </div>
+      <div style="max-width: 720px;margin: 0 auto 20px;">
+        <img src="IMG_0121.png" alt="UC Fund構想図">
+      </div>
+      <div class="three-columns">
+        <div class="pillar-card">
+          <div class="pillar-tag">Pillar 01 </div>
+          <div class="pillar-title">住：街としての宇宙居住区 </div>
+          <p class="pillar-body">
+            無機質なステーションではなく、1Gの人工重力を実現し、地球と同じように健康に暮らせる「街」を目指します。
+          </p>
+          <ul class="pillar-list">
+            <li><strong>ルナグラス構想 （<a href="https://space.innovationkyoto.org/" target="_blank" rel="noopener noreferrer">京都大学SIC</a> +<a href="https://www.kajima.co.jp/" target="_blank" rel="noopener noreferrer">鹿島建設</a>)</strong>：日本発の世界唯一の回転型人工重力施設。</li>
+            <a href="https://ucfundproject-ops.github.io/runa/" style="display: inline-block; margin-top: 10px; font-size: 13px; color: var(--accent-cyan); text-decoration: underline;">
+      👉 ルナグラス解説ページはこちら</a>
+            <li>居住モジュール、宇宙農業、閉鎖生態系の研究。</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-tag">Pillar 02 </div>
+          <div class="pillar-title">動：安価な宇宙輸送インフラ </div>
+          <p class="pillar-body">
+            誰もがパスポートとチケット1枚で宇宙に行けるような、低コストで再使用可能な輸送インフラを目指します。
+          </p>
+          <ul class="pillar-list">
+            <li><strong>再利用型エンジン (
+              <a href="https://innovative-space-carrier.co.jp/" target="_blank" rel="noopener noreferrer">ISC</a>
+              <a href="https://www.ihi.co.jp/" target="_blank" rel="noopener noreferrer">IHI</a>
+              <a href="https://global.honda/jp/topics/2025/c_2025-06-17c.html" target="_blank" rel="noopener noreferrer">ホンダ</a>
+              <a href="https://www.ebara.com/jp-ja/" target="_blank" rel="noopener noreferrer">荏原製作所</a>
+              </strong>）液化メタンエンジンの燃焼実験や垂直離着陸に成功。</li>
+            <li>滑走路から飛び立つ宇宙往還機の開発支援。</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-tag">Pillar 03 </div>
+          <div class="pillar-title">拓：活用する大地としての宇宙 </div>
+          <p class="pillar-body">
+            月や火星を「見る天体」から、「資源採取・建設・居住・観光」が行われる活用する大地へと変えていくことを目指します。
+          </p>
+          <ul class="pillar-list">
+            <li><strong>クアッドアクセル (<a href="https://www.kajima.co.jp/" target="_blank" rel="noopener noreferrer">鹿島建設</a>)</strong>、搭乗型ロボット<strong>アーカックス(<a href="https://tsubame-hi.com/" target="_blank" rel="noopener noreferrer">ツバメインダストリ</a>)</strong>の開発。</li>
+            <a href="https://ucfundproject-ops.github.io/A4CSEL/" style="display: inline-block; margin-top: 10px; font-size: 13px; color: var(--accent-cyan); text-decoration: underline;">
+              👉クアッドアクセル解説ページはこちら
+            </a>
+            <li>宇宙作業ロボット、建設ロボット技術実証支援。</li>
+          </ul>
+        </div>
       </div>
       <div class="pill-list">
-          <div class="pill pill--orange">攻撃兵器など純軍事目的には使用せず、平和的・民生的な宇宙利用に限定します。</div>
+        <div class="pill pill--green">初期資金配分イメージ：住 50% / 動 30% / 拓 20%（年度ごとに見直し）</div>
       </div>
-      <div class="note-box">
-        <strong>重要：</strong><br>
-        現在、この構想はアイデア段階のため、実際の資金募集・運用は行っていません。<br>
-        将来もし基金として具体化する場合は、関係法令を遵守し、専門家からなるアドバイザリーボード等とともにスキームを検討し、公的な信頼性と継続性を担保するため法人化を目指します。
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="feedback">
-    <div class="section-header">
-      <div class="section-label">Feedback</div>
-      <h2 class="section-title">この構想について、あなたの意見を聞かせてください</h2>
-      <p class="section-desc">
-        このページは、<strong>賛成・反対を含めた率直なフィードバック</strong>を集めることを目的としています。良い点・懸念点・こうしてほしいという提案など、ぜひ自由に教えてください。
-      </p>
-    </div>
-    <div class="feedback-grid">
-      <div>
-        <ul class="feedback-list">
-          <li>この構想に賛成 / 反対する理由。</li>
-          <li>「住・動・拓」のうち、特に重視したい分野や追加してほしいテーマ。</li>
-          <li>資金の集め方や使い方で気になる点・改善案。</li>
-          <li>「こういう宇宙の未来を目指したい」というあなた自身のビジョン。</li>
-        </ul>
+    <section id="power-of-1yen" class="reveal">
+      <div class="section-header">
+        <div class="section-label">Impact</div>
+        <h2 class="section-title">1円がつくる、巨大な未来</h2>
       </div>
-      <div class="feedback-card">
-        <p><strong>ご意見の送り先 </strong></p>
-        <p style="margin-top:6px;">
-          ・Googleフォーム：アンケート<br>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUBxsr8aXGwboyF2-lyW_5braWRDRTJMWRIaagtPt9Yx170Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
-            回答はこちらから
-          </a><br>
-          ・Twitter（X）：<br>
-          <a href="https://x.com/UCfundCONCEPT" target="_blank" rel="noopener noreferrer">
-            @UCfundCONCEPT
-          </a><br>
-          ハッシュタグ <strong>#宇宙1日1円基金</strong> もつけてもらえると嬉しいです。
+
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-title">1人の参加</div>
+          <div class="impact-number">365円/年</div>
+          <div class="impact-note">（まずは知ることから始まる）</div>
+        </div>
+
+        <div class="impact-card">
+          <div class="impact-title">10万人の賛同</div>
+          <div class="impact-number">3,650万円/年</div>
+          <div class="impact-note">（研究・実験を加速させる）</div>
+        </div>
+
+        <div class="impact-card">
+          <div class="impact-title">100万人の連帯</div>
+          <div class="impact-number">3.6億円/年</div>
+          <div class="impact-note">（宇宙インフラの実装へ）</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-message" aria-labelledby="impact-message-title">
+      <h3 id="impact-message-title" class="impact-message-title">1日1円に込めた想い</h3>
+      <p class="impact-message-body">
+        大きすぎる寄付は続かない。少なすぎる金額では届かない。<br>
+        1日1円という<strong>「忘れるほど小さな負担」</strong>が、大勢集まることで<strong>「無視できない巨大な力」</strong>に変わる。
+      </p>
+    </section>
+
+    <section id="signature">
+      <div class="section-header">
+        <div class="section-label">Signature</div>
+        <h2 class="section-title">署名活動にご協力ください</h2>
+        <p class="section-desc">
+          「宇宙1日1円基金 UC Fund」構想の実現に向けて、皆様の賛同の声を形にするため、署名活動を開始いたしました。目標は10,000人の署名です。
         </p>
       </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-  <p>
-    このページに記載された内容は、個人による「宇宙1日1円基金 UC Fund」構想メモであり、いかなる企業・団体の公式な見解や約束ではありません。
-  </p>
-  <p>
-    国際法および国内法を尊重し、平和的・民生的な宇宙利用のみを想定しています。
-  </p>
-  <p>
-    &copy; 2026 UC Fund Concept. All rights reserved.
-  </p>
-</footer>
-</body>
-</html>
+      <div class="counter-box">
+          <p style="margin-bottom: 10px; opacity: 0.8;">目標：10,000人の署名活動実施中 </p>
+          <span class="counter-num" id="sig-count">0</span>
+          <p>賛同者の声が集まっています</p>
+      </div>
+      <div class="card signature-card">
+        <h3 style="font-size: 18px; margin-bottom: 12px;">市民の手でつくる宇宙インフラの未来へ </h3>
+        <p class="signature-lead">本構想にご賛同いただける方は、以下どちらかの方法で意思表示をお願いします。</p>
+
+        <div class="signature-split">
+          <div class="signature-col">
+            <div class="signature-col-title">署名（Change.org）</div>
+            <div class="signature-col-desc">より広く賛同を集めるための署名ページです。</div>
+            <a href="https://c.org/QYcgwPDdTQ" target="_blank" rel="noopener noreferrer" class="btn-primary btn-signature">
+              Change.org で署名する
+            </a>
+            <div class="signature-col-note">※外部サイトへ移動します</div>
+          </div>
+
+          <div class="signature-col">
+            <div class="signature-col-title">簡単賛同（1クリック）</div>
+            <div class="signature-col-desc">個人情報（名前・メール・住所等）不要。チェックして送信するだけです。</div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8visBpvssC4N7YQXYUaOkUy5MoL-fm-YE_lwNdL-ssWqvfA/viewform?usp=publish-editor"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-primary btn-consent">
+              1クリックで賛同する
+            </a>
+            <div class="signature-col-note">※Googleフォーム（同一アカウント1回）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="roadmap">
+      <div class="section-header">
+        <div class="section-label">Roadmap</div>
+        <h2 class="section-title">ロードマップ概要</h2>
+        <p class="section-desc">
+          宇宙インフラの整備は、数十年〜100年単位の取り組みになります。賛同者一人ひとりの思いを集めて実現します。
+        </p>
+      </div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-term">近距離（〜10年）</div>
+            <div class="timeline-desc">
+              認知向上、サポーターを一千万人規模へ。ルナグラス研究への実質的貢献と実績化。
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-term">中距離（〜30年）</div>
+            <div class="timeline-desc">
+              月・軌道上での長期居住実験。宇宙作業ロボや往還機の実用化プロトタイプの運用開始。
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-term">長距離（〜100年）</div>
+            <div class="timeline-desc">
+              コロニー初号機の建設。月、火星への「街」の建設、持続的な支援。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="join">
+      <div class="section-header">
+        <div class="section-label">Participation</div>
+        <h2 class="section-title">参加方法のイメージと資金調達</h2>
+        <p class="section-desc">
+          市民が無理なく継続して参加できる仕組みを構築し、将来的には「1日1円」レベルの少額から参加できる仕組みを想定しています。
+        </p>
+      </div>
+      <div class="participation-grid">
+        <div class="participation-box">
+            <div class="card">
+              <h3>想定している仕組み</h3>
+              <ul>
+                <li>月額制サブスクリプション：30円/300円 / 1,000円の3プランを想定。</li>
+                <li>PayPay ポイント寄付：法人化後に導入予定。</li>
+                <li>いつでも金額変更・停止可能な、任意参加・自律的なモデル。</li>
+              </ul>
+            </div>
+            <div class="card">
+                <h3>透明性の確保 </h3>
+                <ul>
+                    <li>集まった資金の配分先と使途を公開。</li>
+                    <li>半年に一度の活動報告書（宇宙新聞）を発行。</li>
+                    <li>参加者が「自分の1円がどう形になっているか」を実感できる仕組み。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="pill-list">
+            <div class="pill pill--orange">攻撃兵器など純軍事目的には使用せず、平和的・民生的な宇宙利用に限定します。</div>
+        </div>
+        <div class="note-box">
+          <strong>重要：</strong><br>
+          現在、この構想はアイデア段階のため、実際の資金募集・運用は行っていません。<br>
+          将来もし基金として具体化する場合は、関係法令を遵守し、専門家からなるアドバイザリーボード等とともにスキームを検討し、公的な信頼性と継続性を担保するため法人化を目指します。
+        </div>
+      </div>
+    </section>
+  
+    <section id="feedback">
+      <div class="section-header">
+        <div class="section-label">Feedback</div>
+        <h2 class="section-title">この構想について、あなたの意見を聞かせてください</h2>
+        <p class="section-desc">
+          このページは、<strong>賛成・反対を含めた率直なフィードバック</strong>を集めることを目的としています。良い点・懸念点・こうしてほしいという提案など、ぜひ自由に教えてください。
+        </p>
+      </div>
+      <div class="feedback-grid">
+        <div>
+          <ul class="feedback-list">
+            <li>この構想に賛成 / 反対する理由。</li>
+            <li>「住・動・拓」のうち、特に重視したい分野や追加してほしいテーマ。</li>
+            <li>資金の集め方や使い方で気になる点・改善案。</li>
+            <li>「こういう宇宙の未来を目指したい」というあなた自身のビジョン。</li>
+          </ul>
+        </div>
+        <div class="feedback-card">
+          <p><strong>ご意見の送り先 </strong></p>
+          <p style="margin-top:6px;">
+            ・Googleフォーム：アンケート<br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUBxsr8aXGwboyF2-lyW_5braWRDRTJMWRIaagtPt9Yx170Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
+              回答はこちらから
+            </a><br>
+            ・Twitter（X）：<br>
+            <a href="https://x.com/UCfundCONCEPT" target="_blank" rel="noopener noreferrer">
+              @UCfundCONCEPT
+            </a><br>
+            ハッシュタグ <strong>#宇宙1日1円基金</strong> もつけてもらえると嬉しいです。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>
+      このページに記載された内容は、個人による「宇宙1日1円基金 UC Fund」構想メモであり、いかなる企業・団体の公式な見解や約束ではありません。
+    </p>
+    <p>
+      国際法および国内法を尊重し、平和的・民生的な宇宙利用のみを想定しています。
+    </p>
+    <p>
+      © 2026 UC Fund Concept. All rights reserved.
+    </p>
+  </footer>
+  
+  </body></html>
